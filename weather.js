@@ -1,4 +1,4 @@
-const apiKey = "YOUR_API_KEY_HERE";
+const apiKey = "befcd427358fd34c9f4ad25a43277fa2";
 let searchhistory = JSON.parse(localStorage.getItem("weather_history")) || [];
 renderhistory();
 
@@ -7,7 +7,7 @@ async function getdata(city) {
     try {
         const response= await fetch(url)
         if (!response.ok) {
-            throw new Error("city not found");
+            throw new Error("City not found");
         }
         const data = await response.json();
         weatherdisplay(data);
@@ -44,7 +44,7 @@ function addtohistory(city){
         ).join("");
     }
 }
- const click=document.querySelector("#search#btn");
+ const click=document.querySelector("#searchbtn");
  const type=document.querySelector("#city-input");
  click.addEventListener("click",()=>{
     const input=type.value;
