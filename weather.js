@@ -55,3 +55,12 @@ function addtohistory(city){
         alert`Please enter the name of your city`;
     }
  })
+
+ const clear=document.querySelector("#clear")
+ clear.addEventListener("click",()=>{
+    if (confirm("Are you sure you want to clear your search history?")){
+    searchhistory=[];
+    localStorage.removeItem("weather_history")
+    renderhistory();
+    }
+ })
