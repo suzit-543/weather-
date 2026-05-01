@@ -3,21 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Modern Weather Dashboard</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <h1>Weather Dashboard</h1>
-        <input type="text" id="city-input" placeholder="Enter your city">
-        <button id="searchbtn">Search</button>
-        <div id="display"></div>
-        <div class="history">
-           <h3>Recent searches</h3>
-           <ul id="list"></ul>
-           <button id="clear">Clear history</button> 
+        
+        <div class="search-box">
+            <input type="text" id="city-input" placeholder="Enter city name...">
+            <button id="searchbtn">Search</button>
         </div>
-    <script src="weather.js"></script>
+
+        <div id="display">
+            <p class="placeholder">Search a city to see the weather</p>
+        </div>
+
+        <div class="history">
+            <h3>Recent Searches</h3>
+            <p style="font-size: 0.7rem; opacity: 0.7;">(Click a city to remove it)</p>
+            <ul id="list"></ul>
+            <button id="clear">Clear All</button>
+        </div>
     </div>
+    <script src="weather.js"></script>
 </body>
 </html>

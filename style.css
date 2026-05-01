@@ -133,6 +133,7 @@ h3 {
     font-size: 0.85rem;
     text-transform: capitalize;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
 }
 
 #clear {
@@ -150,3 +151,5 @@ h3 {
     background: rgba(255, 255, 255, 0.1);
     border-color: white;
 }
+
+
