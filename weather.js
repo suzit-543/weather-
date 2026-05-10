@@ -1,4 +1,4 @@
-const apiKey = "befcd427358fd34c9f4ad25a43277fa2";
+const apiKey = API_CONFIG.apikey;
 let searchhistory = JSON.parse(localStorage.getItem("weather_history")) || [];
 renderhistory();
 
