@@ -20,7 +20,6 @@ async function getdata(city) {
 
 function weatherdisplay(data) {
     const display = document.querySelector("#display");
-    // Added the icon back in for you!
     const icon = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
     
     display.innerHTML = `
