@@ -22,6 +22,14 @@ function weatherdisplay(data) {
     const display = document.querySelector("#display");
     const icon = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
     
+     if (data.main.temp > 25) {
+        document.body.style.background = "linear-gradient(135deg, #f83600, #f9d423)";
+    } else if (data.main.temp < 10) {
+        document.body.style.background = "linear-gradient(135deg, #8e9eab, #eef2f3)";
+    } else {
+        document.body.style.background = "linear-gradient(135deg, #00b4db, #0083b0)";
+    }
+
     display.innerHTML = `
         <h2>${data.name}, ${data.sys.country}</h2>
         <img src="${icon}" alt="weather icon">
@@ -42,31 +50,32 @@ function addtohistory(city) {
         renderhistory();
     }
 }
- 
+
+function deleteCity(city) {
+    searchhistory = searchhistory.filter(item => item !== city);
+    localStorage.setItem("weather_history", JSON.stringify(searchhistory));
+    renderhistory();
+}
+
 function renderhistory() {
     const listElement = document.querySelector("#list");
     if (listElement) {
-        listElement.innerHTML = searchhistory.map(city => 
-            `<li>${city}</li>`
-        ).join("");
+        listElement.innerHTML = searchhistory.map(city => `
+            <li class="history-item">
+                <span class="city-name">${city}</span>
+                <button class="delete-btn">x</button>
+            </li>
+        `).join("");
     }
 }
 
-const listElement = document.querySelector("#list");
-listElement.addEventListener("click", (e) => {
-    if (e.target.tagName === "LI") {
-        const cityToRemove = e.target.textContent;
-        searchhistory = searchhistory.filter(item => item !== cityToRemove);
-        localStorage.setItem("weather_history", JSON.stringify(searchhistory));
-        renderhistory();
-    }
-});
-
 const click = document.querySelector("#searchbtn");
 const type = document.querySelector("#city-input");
+const listElement = document.querySelector("#list");
+const clear = document.querySelector("#clear");
 
 click.addEventListener("click", () => {
-    const input = type.value;
+    const input = type.value.trim();
     if (input) {
         getdata(input);
         type.value = "";
@@ -75,11 +84,23 @@ click.addEventListener("click", () => {
     }
 });
 
-const clear = document.querySelector("#clear");
 clear.addEventListener("click", () => {
     if (confirm("Are you sure you want to clear your search history?")) {
         searchhistory = [];
         localStorage.removeItem("weather_history");
         renderhistory();
+    }
+});
+
+listElement.addEventListener("click", (e) => {
+    const li = e.target.closest("li");
+    if (!li) return;
+
+    const cityName = li.querySelector(".city-name").textContent;
+
+    if (e.target.classList.contains("delete-btn")) {
+        deleteCity(cityName);
+    } else {
+        getdata(cityName);
     }
 });
