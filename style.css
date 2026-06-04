@@ -1,27 +1,29 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family:'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
-body{
+
+body {
     background: linear-gradient(135deg, #abaeaf, #e1a34b);
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
-    transition: background 0.5s ease;
+    transition: background 0.6s ease;
 }
+
 .container {
-    background: rgba(255, 255, 255, 0.15); 
+    background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 25px;
     padding: 35px;
     width: 100%;
-    max-width: 420px;
+    max-width: 440px;
     box-shadow: 0 10px 32px rgba(0, 0, 0, 0.15);
     color: white;
     text-align: center;
@@ -43,21 +45,27 @@ h1 {
     color: white;
     font-size: 1rem;
     outline: none;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     transition: 0.3s;
 }
 
 #city-input:focus {
     background: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 0 10px rgba(255,255,255,0.1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
 #city-input::placeholder {
     color: rgba(255, 255, 255, 0.7);
 }
 
+.btn-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
 #searchbtn {
-    width: 100%;
+    flex: 1;
     padding: 12px;
     border-radius: 15px;
     border: none;
@@ -67,7 +75,6 @@ h1 {
     font-size: 1rem;
     cursor: pointer;
     transition: 0.3s;
-    margin-bottom: 30px;
 }
 
 #searchbtn:hover {
@@ -75,25 +82,60 @@ h1 {
     transform: translateY(-2px);
 }
 
+#locationbtn {
+    padding: 12px 14px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: 0.3s;
+    white-space: nowrap;
+}
+
+#locationbtn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+}
+
 #display {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     min-height: 150px;
 }
 
 #display h2 {
-    font-size: 2.2rem;
+    font-size: 2rem;
     margin-bottom: 5px;
 }
 
 #display img {
     width: 80px;
-    filter: drop-shadow(0 0 8px rgba(255,255,255,0.3));
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
 }
 
 #display p {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     margin: 4px 0;
     opacity: 0.9;
+}
+
+.placeholder {
+    opacity: 0.6;
+    font-style: italic;
+    margin-top: 40px;
+}
+
+.loading {
+    opacity: 0.8;
+    font-style: italic;
+    margin-top: 40px;
+    animation: pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.5; }
+    50%       { opacity: 1; }
 }
 
 .error {
@@ -102,6 +144,78 @@ h1 {
     background: rgba(255, 0, 0, 0.2);
     padding: 10px;
     border-radius: 10px;
+    margin-top: 20px;
+}
+
+.updated {
+    font-size: 0.75rem !important;
+    opacity: 0.5 !important;
+    margin-top: 10px !important;
+    font-style: italic;
+}
+
+#togglebtn {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    cursor: pointer;
+    transition: 0.3s;
+    margin: 6px 0 10px;
+}
+
+#togglebtn:hover {
+    background: rgba(255, 255, 255, 0.35);
+}
+
+
+#forecast-container {
+    margin-bottom: 25px;
+}
+
+.forecast-title {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.7;
+    margin-bottom: 10px;
+}
+
+.forecast-strip {
+    display: flex;
+    justify-content: space-between;
+    gap: 6px;
+}
+
+.forecast-card {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 14px;
+    padding: 8px 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.forecast-card img {
+    width: 36px;
+}
+
+.f-day {
+    font-size: 0.75rem;
+    font-weight: 600;
+    opacity: 0.85;
+    margin: 0;
+}
+
+.f-temp {
+    font-size: 0.8rem;
+    margin: 0;
+    opacity: 0.9;
 }
 
 .history {
@@ -111,29 +225,66 @@ h1 {
 
 h3 {
     font-size: 1rem;
-    margin-bottom: 15px;
+    margin-bottom: 8px;
     text-transform: uppercase;
     letter-spacing: 1px;
     opacity: 0.8;
 }
 
+.remove {
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 12px;
+    font-style: italic;
+}
+
 #list {
     list-style: none;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
     gap: 8px;
     margin-bottom: 20px;
 }
 
 #list li {
-    background: rgba(255, 255, 255, 0.15);
-    padding: 6px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px 15px;
     border-radius: 20px;
-    font-size: 0.85rem;
-    text-transform: capitalize;
     border: 1px solid rgba(255, 255, 255, 0.1);
     cursor: pointer;
+    transition: 0.3s;
+    text-transform: capitalize;
+    font-size: 0.9rem;
+}
+
+#list li:hover {
+    background: rgba(255, 255, 255, 0.22);
+}
+
+.city-name {
+    flex: 1;
+    text-align: left;
+}
+
+.delete-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 0 6px;
+    border-radius: 50%;
+    transition: 0.3s;
+    line-height: 1;
+    opacity: 0.7;
+}
+
+.delete-btn:hover {
+    background: rgba(255, 0, 0, 0.4);
+    opacity: 1;
 }
 
 #clear {
@@ -150,49 +301,4 @@ h3 {
 #clear:hover {
     background: rgba(255, 255, 255, 0.1);
     border-color: white;
-}
-
-.remove {
-    font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.6);
-    margin-bottom: 10px;
-    font-style: italic;
-}
-
-#list li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 8px 15px;
-    border-radius: 20px;
-    margin-bottom: 8px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-#list li:hover {
-    background: rgba(255, 255, 255, 0.25);
-}
-
-.delete-btn {
-    background: transparent;
-    border: none;
-    color: white;
-    font-size: 1.1rem;
-    cursor: pointer;
-    padding: 0 8px;
-    border-radius: 50%;
-    transition: 0.3s;
-    line-height: 1;
-}
-
-.delete-btn:hover {
-    background: rgba(255, 0, 0, 0.4);
-    color: white;
-}
-
-.city-name {
-    flex: 1; 
-    text-align: left;
 }

@@ -9,19 +9,24 @@
 <body>
     <div class="container">
         <h1>Weather Dashboard</h1>
-        
+
         <div class="search-box">
-            <input type="text" id="city-input" placeholder="Enter city name...">
-            <button id="searchbtn">Search</button>
+            <input type="text" id="city-input" placeholder="Enter city name..." autocomplete="off">
+            <div class="btn-row">
+                <button id="searchbtn">Search</button>
+                <button id="locationbtn" title="Use my location">📍 My Location</button>
+            </div>
         </div>
 
         <div id="display">
             <p class="placeholder">Search a city to see the weather</p>
         </div>
 
+        <div id="forecast-container"></div>
+
         <div class="history">
             <h3>Recent Searches</h3>
-            <p class="remove">(Click a city to remove it)</p>
+            <p class="remove">(Click a city to search again · × to remove)</p>
             <ul id="list"></ul>
             <button id="clear">Clear All</button>
         </div>
