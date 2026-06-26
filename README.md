@@ -24,4 +24,4 @@ A weather web app built with vanilla JavaScript that shows real-time weather dat
 4. Open `weather.html` with Live Server
 
 ## Live De
-[View Live](#) ← update this after deploying
+[View Live](https://weather-7wtv.vercel.app)
