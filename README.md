@@ -23,5 +23,5 @@ A weather web app built with vanilla JavaScript that shows real-time weather dat
 3. Add your OpenWeatherMap API key inside `key.js`
 4. Open `weather.html` with Live Server
 
-## Live Demo
+## Live De
 [View Live](#) ← update this after deploying
